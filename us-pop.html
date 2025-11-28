@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미국 팝 소개</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kpop-blue': {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #3b82f6 30%, #2563eb 60%, #1e40af 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .glass-card-strong {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.5);
+        }
+        
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .flag-float {
+            animation: flagFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes flagFloat {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+        .fade-in-delay-5 { transition-delay: 0.5s; }
+        .fade-in-delay-6 { transition-delay: 0.6s; }
+        
+        .fade-in-initial {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInInitial 1s ease-out forwards;
+        }
+        
+        @keyframes fadeInInitial {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .navbar-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #60a5fa, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: #bfdbfe;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: #dbeafe;
+            font-weight: 600;
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                    menuIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="navbar-glass sticky top-0 z-50 fade-in-initial">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl lg:text-3xl">🎵</span>
+                    <span class="text-lg lg:text-xl font-bold text-white">World Pop Music</span>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                    <a href="index.html" class="nav-link text-blue-100 text-sm lg:text-base px-3 py-2 rounded-lg hover:bg-white/10 transition-all">K-POP</a>
+                    <a href="us-pop.html" class="nav-link active text-white text-sm lg:text-base px-3 py-2 rounded-lg hover:bg-white/10 transition-all">미국 팝</a>
+                    <a href="uk-pop.html" class="nav-link text-blue-100 text-sm lg:text-base px-3 py-2 rounded-lg hover:bg-white/10 transition-all">영국 팝</a>
+                    <a href="j-pop.html" class="nav-link text-blue-100 text-sm lg:text-base px-3 py-2 rounded-lg hover:bg-white/10 transition-all">일본 팝</a>
+                    <a href="latin-pop.html" class="nav-link text-blue-100 text-sm lg:text-base px-3 py-2 rounded-lg hover:bg-white/10 transition-all">라틴 팝</a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <div class="py-4 space-y-2">
+                    <a href="index.html" class="nav-link block text-blue-100 px-4 py-3 rounded-lg hover:bg-white/10 transition-all">K-POP</a>
+                    <a href="us-pop.html" class="nav-link active block text-white px-4 py-3 rounded-lg hover:bg-white/10 transition-all">미국 팝</a>
+                    <a href="uk-pop.html" class="nav-link block text-blue-100 px-4 py-3 rounded-lg hover:bg-white/10 transition-all">영국 팝</a>
+                    <a href="j-pop.html" class="nav-link block text-blue-100 px-4 py-3 rounded-lg hover:bg-white/10 transition-all">일본 팝</a>
+                    <a href="latin-pop.html" class="nav-link block text-blue-100 px-4 py-3 rounded-lg hover:bg-white/10 transition-all">라틴 팝</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 bg-black opacity-5"></div>
+        <div class="relative max-w-7xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 fade-in-initial">
+                <div class="text-center">
+                    <div class="flex justify-center items-center gap-6 mb-8">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" 
+                            alt="미국 국기" 
+                            class="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-28 flag-float object-contain drop-shadow-2xl"
+                        />
+                        <div class="animate-float inline-block">
+                            <span class="text-7xl sm:text-8xl lg:text-9xl">🎵</span>
+                        </div>
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" 
+                            alt="미국 국기" 
+                            class="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-28 flag-float object-contain drop-shadow-2xl"
+                            style="animation-delay: 0.5s;"
+                        />
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl">미국 팝</h1>
+                    <p class="text-xl sm:text-2xl lg:text-3xl text-blue-100 font-light mb-4">세계 팝 음악의 중심지</p>
+                    <div class="mt-8 flex justify-center gap-4">
+                        <div class="w-16 h-1 bg-blue-300/80 rounded-full animate-pulse-slow"></div>
+                        <div class="w-16 h-1 bg-blue-400/80 rounded-full animate-pulse-slow" style="animation-delay: 0.2s;"></div>
+                        <div class="w-16 h-1 bg-blue-300/80 rounded-full animate-pulse-slow" style="animation-delay: 0.4s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="mb-16">
+            <div class="glass-card-strong rounded-3xl shadow-2xl p-8 sm:p-12 lg:p-16 fade-in">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-2 h-12 bg-gradient-to-b from-blue-400 to-blue-600 rounded-full shadow-lg"></div>
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg">미국 팝이란?</h2>
+                </div>
+                <div class="space-y-6 text-white/90">
+                    <p class="text-lg sm:text-xl leading-relaxed">
+                        미국 팝(American Pop)은 미국에서 발전한 대중음악 장르로, <span class="font-semibold text-blue-200">1950년대 로큰롤부터 시작</span>하여 
+                        현재까지 전 세계 음악 산업을 주도하고 있습니다. 미국 팝은 다양한 장르와 스타일을 융합하여 
+                        지속적으로 진화하고 있으며, 글로벌 음악 트렌드의 기준점이 되고 있습니다.
+                    </p>
+                    <p class="text-lg sm:text-xl leading-relaxed">
+                        미국 팝의 특징은 <span class="font-semibold text-blue-200">혁신적인 프로덕션, 강력한 멜로디, 다채로운 사운드</span>입니다. 
+                        R&B, 힙합, 컨트리, 록 등 다양한 장르의 영향을 받아 풍부한 음악적 스펙트럼을 보여줍니다.
+                    </p>
+                    <div class="mt-8 pt-8 border-t border-white/20">
+                        <h3 class="text-2xl font-bold text-white mb-4">문화적 뿌리</h3>
+                        <p class="text-lg leading-relaxed">
+                            미국 팝은 아프리카계 미국인의 블루스와 재즈, 유럽의 클래식 음악, 라틴 음악 등 
+                            다양한 문화적 배경에서 탄생했습니다. 이러한 다문화적 융합이 미국 팝의 독특한 정체성을 만들어냈습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="text-center mb-12 fade-in">
+                <div class="glass-card-light rounded-2xl p-6 inline-block">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4 drop-shadow-lg">주요 아티스트</h2>
+                    <p class="text-blue-100 text-lg">세계를 사로잡은 미국 팝 스타들</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-1">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">⭐</div>
+                        <h3 class="text-2xl font-bold mb-2">Taylor Swift</h3>
+                        <p class="text-blue-100 text-lg">테일러 스위프트</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-2">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">🎤</div>
+                        <h3 class="text-2xl font-bold mb-2">Ariana Grande</h3>
+                        <p class="text-blue-100 text-lg">아리아나 그란데</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-3">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">🔥</div>
+                        <h3 class="text-2xl font-bold mb-2">Billie Eilish</h3>
+                        <p class="text-blue-100 text-lg">빌리 아일리시</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-4">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">💫</div>
+                        <h3 class="text-2xl font-bold mb-2">The Weeknd</h3>
+                        <p class="text-blue-100 text-lg">더 위켄드</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-5">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">🌟</div>
+                        <h3 class="text-2xl font-bold mb-2">Bruno Mars</h3>
+                        <p class="text-blue-100 text-lg">브루노 마스</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover glass-card rounded-2xl p-8 text-white fade-in fade-in-delay-6">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4">🎵</div>
+                        <h3 class="text-2xl font-bold mb-2">Dua Lipa</h3>
+                        <p class="text-blue-100 text-lg"> dua 리파</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="text-center mb-12 fade-in">
+                <div class="glass-card-light rounded-2xl p-6 inline-block">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4 drop-shadow-lg">미국 팝의 역사</h2>
+                    <p class="text-blue-100 text-lg">세계 음악을 이끈 미국 팝의 여정</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="card-hover glass-card-strong rounded-2xl p-8 fade-in fade-in-delay-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-4xl">📅</div>
+                        <h3 class="text-2xl font-bold text-white">1950-1970년대</h3>
+                    </div>
+                    <p class="text-blue-100 leading-relaxed mb-4">
+                        로큰롤의 황금기로 엘비스 프레슬리, 비틀즈 등이 등장했습니다. 
+                        모타운 사운드가 R&B와 팝을 결합하며 새로운 장르를 만들어냈습니다.
+                    </p>
+                </div>
+                
+                <div class="card-hover glass-card-strong rounded-2xl p-8 fade-in fade-in-delay-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-4xl">🚀</div>
+                        <h3 class="text-2xl font-bold text-white">1980-2000년대</h3>
+                    </div>
+                    <p class="text-blue-100 leading-relaxed mb-4">
+                        MTV 시대가 시작되며 뮤직비디오가 음악 산업의 핵심이 되었습니다. 
+                        마이클 잭슨, 마돈나 등이 글로벌 스타로 떠올랐고, 힙합이 본격적으로 메인스트림에 진입했습니다.
+                    </p>
+                </div>
+                
+                <div class="card-hover glass-card-strong rounded-2xl p-8 fade-in fade-in-delay-3">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-4xl">🌟</div>
+                        <h3 class="text-2xl font-bold text-white">2000년대 이후</h3>
+                    </div>
+                    <p class="text-blue-100 leading-relaxed mb-4">
+                        디지털 시대가 도래하며 스트리밍이 음악 산업을 변화시켰습니다. 
+                        테일러 스위프트, 빌리 아일리시 등 새로운 세대의 아티스트들이 등장하며 
+                        음악 산업의 패러다임을 바꾸고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="text-center mb-12 fade-in">
+                <div class="glass-card-light rounded-2xl p-6 inline-block">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4 drop-shadow-lg">미국 팝의 특징</h2>
+                    <p class="text-blue-100 text-lg">미국 팝을 특별하게 만드는 요소들</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="card-hover glass-card-strong rounded-2xl p-8 border-l-4 border-blue-300 fade-in fade-in-delay-1">
+                    <div class="text-4xl mb-4">🎹</div>
+                    <h3 class="text-xl font-bold text-white mb-3 drop-shadow">혁신적 프로덕션</h3>
+                    <p class="text-blue-100 leading-relaxed">최첨단 기술과 창의적인 사운드 디자인이 특징입니다.</p>
+                </div>
+                
+                <div class="card-hover glass-card-strong rounded-2xl p-8 border-l-4 border-blue-300 fade-in fade-in-delay-2">
+                    <div class="text-4xl mb-4">🌎</div>
+                    <h3 class="text-xl font-bold text-white mb-3 drop-shadow">글로벌 영향력</h3>
+                    <p class="text-blue-100 leading-relaxed">전 세계 음악 트렌드를 선도하고 있습니다.</p>
+                </div>
+                
+                <div class="card-hover glass-card-strong rounded-2xl p-8 border-l-4 border-blue-300 fade-in fade-in-delay-3">
+                    <div class="text-4xl mb-4">🎸</div>
+                    <h3 class="text-xl font-bold text-white mb-3 drop-shadow">다양한 장르</h3>
+                    <p class="text-blue-100 leading-relaxed">R&B, 힙합, 록, 컨트리 등 다양한 장르를 융합합니다.</p>
+                </div>
+                
+                <div class="card-hover glass-card-strong rounded-2xl p-8 border-l-4 border-blue-300 fade-in fade-in-delay-4">
+                    <div class="text-4xl mb-4">💿</div>
+                    <h3 class="text-xl font-bold text-white mb-3 drop-shadow">산업적 규모</h3>
+                    <p class="text-blue-100 leading-relaxed">세계 최대 규모의 음악 산업을 보유하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 fade-in">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="fade-in fade-in-delay-1">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-2 drop-shadow-lg">1위</div>
+                        <div class="text-blue-100 text-sm sm:text-base">음악 시장 규모</div>
+                    </div>
+                    <div class="fade-in fade-in-delay-2">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-2 drop-shadow-lg">수천</div>
+                        <div class="text-blue-100 text-sm sm:text-base">글로벌 아티스트</div>
+                    </div>
+                    <div class="fade-in fade-in-delay-3">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-2 drop-shadow-lg">100년+</div>
+                        <div class="text-blue-100 text-sm sm:text-base">음악 역사</div>
+                    </div>
+                    <div class="fade-in fade-in-delay-4">
+                        <div class="text-4xl sm:text-5xl font-bold text-white mb-2 drop-shadow-lg">∞</div>
+                        <div class="text-blue-100 text-sm sm:text-base">글로벌 영향력</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-card-light border-t border-white/20 py-8 mt-16 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" 
+                    alt="미국 국기" 
+                    class="w-12 h-8 object-contain opacity-80"
+                />
+                <p class="text-blue-100 text-sm sm:text-base">
+                    &copy; 2024 미국 팝 소개 페이지 | 세계 팝 음악의 중심지
+                </p>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" 
+                    alt="미국 국기" 
+                    class="w-12 h-8 object-contain opacity-80"
+                />
+            </div>
+            <div class="mt-4 flex justify-center gap-2">
+                <span class="w-2 h-2 bg-blue-300 rounded-full animate-pulse"></span>
+                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span>
+                <span class="w-2 h-2 bg-blue-300 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
